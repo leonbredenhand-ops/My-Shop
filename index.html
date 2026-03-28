@@ -344,7 +344,23 @@
 </div>
 
 <div id="toast"></div>
+function sendOrder() {
+  if (!cart || cart.length === 0) {
+    alert("Cart is empty");
+    return;
+  }
 
+  let message = "Order:\n";
+
+  cart.forEach(item => {
+    message += `${item.name} x${item.qty || 1}\n`;
+  });
+
+  const phone = "+64224095165";
+  const smsLink = `sms:${phone}?body=${encodeURIComponent(message)}`;
+
+  window.location.href = smsLink;
+}
 <script>
 // ── DATA ────────────────────────────────────────────────────────────────
 let products = JSON.parse(localStorage.getItem('shop_products') || 'null') || [
