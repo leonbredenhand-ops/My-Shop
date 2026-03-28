@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial; padding: 20px; background: #111; color: white; }
+    .product { margin: 10px 0; padding: 10px; border: 1px solid #444; }
+    button { padding: 10px; margin-top: 5px; }
+  </style>
+</head>
+
+<body>
+
+<h2>My Shop</h2>
+
+<div id="products"></div>
+
+<h3>Cart</h3>
+<div id="cart"></div>
+
+<button onclick="sendOrder()">📩 Send Order</button>
+
+<script>
+
+let products = [
+  { id: 1, name: "Milk 2L" },
+  { id: 2, name: "Bread" },
+  { id: 3, name: "Eggs" }
+];
+
+let cart = [];
+
+function renderProducts() {
+  let html = "";
+  products.forEach(p => {
+    html += `
+      <div class="product">
+        ${p.name}<br>
+        <button onclick="addToCart(${p.id})">Add</button>
+      </div>
+    `;
+  });
+  document.getElementById("products").innerHTML = html;
+}
+
+function addToCart(id) {
+  const item = products.find(p => p.id === id);
+  cart.push(item);
+  renderCart();
+}
+
+function renderCart() {
+  let html = "";
+  cart.forEach(item => {
+    html += `<div>${item.name}</div>`;
+  });
+  document.getElementById("cart").innerHTML = html;
+}
+
+function sendOrder() {
+  if (cart.length === 0) {
+    alert("Cart is empty");
+    return;
+  }
+
+  let message = "Order:\n";
+  cart.forEach(item => {
+    message += item.name + "\n";
+  });
+
+  const phone = "+64224095165";
+  window.location.href = "sms:" + phone + "?body=" + encodeURIComponent(message);
+}
+
+renderProducts();
+
+</script>
+
+</body>
+</html>
