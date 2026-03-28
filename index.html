@@ -406,10 +406,8 @@ function renderShop() {
         <div class="product-desc">${p.desc}</div>
         <div class="product-footer">
           <div class="product-price">$${p.price.toFixed(2)}</div>
-          </div><a href="sms:+64224095165?body=Order:%20${encodeURIComponent(p.name)}" style="text-decoration:none;">
-  <button class="add-btn">📩 Order</button>
-</a>
-      </div>
+          </div>
+      </div><button class="add-btn" onclick="addToCart(${p.id})">Add</button>
     </div>
   `).join('');
 }
