@@ -362,10 +362,15 @@ function sendOrder() {
 
     window.location.href = smsLink;
 
-  } catch (err) {
-    alert("Error: " + err.message);
-  }
-}
+  <div id="cart">
+  <!-- your cart items -->
+</div>
+
+<button onclick="sendOrder()" class="add-btn">📩 Send Order</button>
+
+<script>
+  // your code here
+</script>
 <script>
 // ── DATA ────────────────────────────────────────────────────────────────
 let products = JSON.parse(localStorage.getItem('shop_products') || 'null') || [
