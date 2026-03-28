@@ -344,12 +344,7 @@
 </div>
 
 <div id="toast"></div>
-function sendOrder() {
-  try {
-    if (!cart || cart.length === 0) {
-      alert("Cart is empty");
-      return;
-    }
+
 
     let message = "Order:\n";
 
@@ -368,10 +363,12 @@ function sendOrder() {
 
 <button onclick="sendOrder()" class="add-btn">📩 Send Order</button>
 
-<script>
-  // your code here
-</script>
-<script>
+<script>function sendOrder() {
+  try {
+    if (!cart || cart.length === 0) {
+      alert("Cart is empty");
+      return;
+    }
 // ── DATA ────────────────────────────────────────────────────────────────
 let products = JSON.parse(localStorage.getItem('shop_products') || 'null') || [
   { id: 1, name: 'Classic Leather Wallet', price: 45, icon: '👜', desc: 'Hand-stitched genuine leather wallet with card slots.', img: '' },
